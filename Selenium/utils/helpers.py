@@ -3,7 +3,11 @@ from selenium.webdriver.common.by import By #Seleccionar por class, name, id
 from selenium.webdriver.chrome.options import Options
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 import time
+import os
+URL = 'https://www.saucedemo.com/'
 
 URL = "https://www.saucedemo.com/"
 USERNAME = "standard_user"
@@ -29,3 +33,11 @@ def login_saucedemo(driver):
     driver.find_element(By.ID, 'login-button').click()
 
     driver.implicitly_wait(20)
+
+def get_file_path(file_name, folder="data"):
+
+    current_file = os.path.dirname(__file__)
+    file_path = os.path.join(current_file,"..",folder,file_name)
+
+    return os.path.abspath(file_path)
+
